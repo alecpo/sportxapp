@@ -5,10 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MainTopTabNavigator from '#/navigation/MainTopTabNavigator';
 import DetailsScreen from '#/screens/DetailsScreen';
 
-import logo from '#/assets/img/logo.png';
-
 import COLORS from '#/utils/colors';
 import SPACING from '#/utils/spacing';
+import TYPOGRAPHY from '#/utils/typography';
+import Label from '#/components/Label';
 
 const RootStackNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -62,13 +62,24 @@ const RootStackNavigator = () => {
     <Navigator
       screenOptions={{
         headerTitle: () => (
-          <StyledLogo source={logo} style={{ tintColor: COLORS.secondary }} />
+          <StyledLogoView>
+            <Label
+              content='Sports'
+              color={COLORS.white}
+              typography={TYPOGRAPHY.bigLabelBold}
+            />
+            <Label
+              content='X'
+              marginLeft={SPACING.verySmall}
+              color={COLORS.secondary}
+              typography={TYPOGRAPHY.bigLabelBold}
+            />
+          </StyledLogoView>
         ),
         headerStyle: {
           backgroundColor: COLORS.primary
         },
-        headerTintColor: COLORS.secondary,
-        headerTitleAlign: 'center'
+        headerTintColor: COLORS.secondary
       }}
       headerMode='screen'
       mode='modal'
@@ -85,11 +96,8 @@ const RootStackNavigator = () => {
   );
 };
 
-const StyledLogo = styled.Image`
-  width: 140px;
-  height: 40px;
-  resize-mode: contain;
-  margin-bottom: ${SPACING.smallPlus}px;
+const StyledLogoView = styled.View`
+  flex-direction: row;
 `;
 
 export default RootStackNavigator;

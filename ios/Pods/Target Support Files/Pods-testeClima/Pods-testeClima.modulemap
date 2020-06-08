@@ -1,6 +1,0 @@
-module Pods_testeClima {
-  umbrella header "Pods-testeClima-umbrella.h"
-
-  export *
-  module * { export * }
-}

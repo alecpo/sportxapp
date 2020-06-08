@@ -1,5 +1,5 @@
 {
-  "name": "testeClima",
+  "name": "SportXApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -15,11 +15,14 @@
     "@react-navigation/native": "^5.1.7",
     "@react-navigation/stack": "^5.2.14",
     "axios": "^0.19.2",
+    "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-masked-text": "^1.13.0",
     "react-native-reanimated": "^1.8.0",
+    "react-native-rename": "^2.4.1",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.7.0",
     "react-native-tab-view": "^2.14.0",
@@ -28,7 +31,8 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

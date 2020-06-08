@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import Label from '#/components/Label';
 import SubmitButton from '#/components/SubmitButton';
 
@@ -19,42 +18,10 @@ import {
   onAddFavorite,
   onRemoveFavorite,
   onUpdateFavorite
-} from '#/store/actions/citiesActions';
+} from '#/store/actions/clientsActions';
 
 const DetailsScreen = ({ route, navigation }) => {
-  const { city } = route.params;
-
-  const { favoriteList } = useSelector(({ cities }) => cities);
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [info, setInfo] = useState({ main: {}, weather: [{}] });
-  const [isFavorite, setIsFavorite] = useState(
-    favoriteList.find(storeCity => storeCity.id === city.id)
-  );
-
-  const dispatch = useDispatch();
-
-  useLayoutEffect(() => {
-    axios({
-      method: 'get',
-      url: API.weather,
-      params: { id: city.id, appid, lang: 'pt', units: 'metric' }
-    })
-      .then(res => {
-        setInfo(res.data);
-        if (isFavorite) dispatch(onUpdateFavorite(res.data));
-        setIsLoading(false);
-      })
-      .catch(e => {
-        console.log('erro ao tentar recuperar clima: ', e);
-      });
-  }, [city, dispatch, isFavorite]);
-
-  const {
-    main: { temp, temp_max, temp_min },
-    name,
-    weather
-  } = info;
+  const { client } = route.params;
 
   const renderRowIcon = (iconName, iconColor, temp, desc) => {
     return (
@@ -76,63 +43,7 @@ const DetailsScreen = ({ route, navigation }) => {
 
   return (
     <StyledContainer activeOpacity={1} onPress={() => navigation.pop()}>
-      <StyledContentView>
-        {isLoading ? (
-          <ActivityIndicator size='large' color={COLORS.primary} />
-        ) : (
-          <>
-            <StyledRow>
-              {isFavorite && <Icon name='star' size={45} color={COLORS.star} />}
-              <Label
-                content={name}
-                typography={TYPOGRAPHY.hugeLabelBold}
-                marginLeft={SPACING.smallPlus}
-              />
-            </StyledRow>
-            <StyledWeatherImage
-              source={{
-                uri: `http://openweathermap.org/img/wn/${
-                  weather[0].icon
-                }@2x.png`
-              }}
-            />
-            <Label
-              textAlign='center'
-              content={weather[0].description}
-              typography={TYPOGRAPHY.hugeLabelBold}
-              marginBottom={SPACING.regular}
-            />
-            {renderRowIcon('thermometer', COLORS.successButton, temp, 'Agora')}
-            {renderRowIcon(
-              'thermometer-plus',
-              COLORS.darkBlue,
-              temp_max,
-              'Máxima'
-            )}
-            {renderRowIcon('thermometer-minus', COLORS.red, temp_min, 'Mínima')}
-            <SubmitButton
-              submit={
-                isFavorite
-                  ? () => {
-                      setIsFavorite(false);
-                      dispatch(onRemoveFavorite(info));
-                    }
-                  : () => {
-                      setIsFavorite(true);
-                      dispatch(onAddFavorite(info));
-                    }
-              }
-              backgroundColor={
-                isFavorite ? COLORS.orange : COLORS.successButton
-              }
-              title={
-                isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
-              }
-              marginVertical={SPACING.small}
-            />
-          </>
-        )}
-      </StyledContentView>
+      <StyledContentView />
     </StyledContainer>
   );
 };

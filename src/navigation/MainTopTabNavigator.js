@@ -1,8 +1,8 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import styled from 'styled-components/native';
-import AllCitiesScreen from '#/screens/AllCitiesScreen';
-import FavoriteCitiesScreen from '#/screens/FavoriteCitiesScreen';
+import NewClientScreen from '#/screens/NewClientScreen';
+import ClientsScreen from '#/screens/ClientsScreen';
 
 import COLORS from '#/utils/colors';
 
@@ -17,20 +17,20 @@ const MainTopTabNavigator = () => {
             activeTintColor: COLORS.primary,
             inactiveTintColor: COLORS.defaultGray,
             labelStyle: { fontWeight: 'bold' },
-            indicatorStyle: { backgroundColor: COLORS.primary }
+            indicatorStyle: { backgroundColor: COLORS.secondary }
           }}
           initialRouteName='Reservations'
           lazy
         >
           <Screen
-            name='FavoriteCities'
-            component={FavoriteCitiesScreen}
-            options={{ tabBarLabel: 'FAVORITOS' }}
+            name='Clients'
+            component={ClientsScreen}
+            options={{ tabBarLabel: 'CLIENTS' }}
           />
           <Screen
             name='AllCities'
-            component={AllCitiesScreen}
-            options={{ tabBarLabel: 'CIDADES' }}
+            component={NewClientScreen}
+            options={{ tabBarLabel: 'NEW CLIENTS' }}
           />
         </Navigator>
       </StyledSafeAreaView>

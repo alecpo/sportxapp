@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import citiesReducer from '#/store/reducers/citiesReducer';
+import clientsReducer from '#/store/reducers/clientsReducer';
 
 const logger = createLogger({ collapsed: true });
 
@@ -13,7 +13,7 @@ if (__DEV__) {
 }
 
 const reducers = combineReducers({
-  cities: citiesReducer
+  clients: clientsReducer
 });
 
 const storeConfig = () => {

@@ -1,15 +1,12 @@
 const colors = {
-  primary: '#00d4a6',
-  secondary: 'white',
+  primary: '#333',
+  secondary: '#f200ff',
   defaultGray: '#aaa',
-  defaultText: '#333',
+  defaultText: '#999',
   backgroundModal: 'rgba(0,0,0,0.5)',
-  darkBlue: '#002852',
-  red: '#c00',
-  orange: '#ffa600',
-  successButton: '#4dbd54',
-  star: '#ffcc00',
+  red: '#d30',
   backgroundColor: '#f7f7f7',
+  white: '#fff',
   emptyListBackgroundColorCard: 'rgba(255, 187,0,0.25)'
 };
 
